@@ -9,6 +9,14 @@ Begin VB.Form Form1
    ScaleHeight     =   4455
    ScaleWidth      =   6660
    StartUpPosition =   3  'Windows Default
+   Begin VB.CommandButton Command2 
+      Caption         =   "Command2"
+      Height          =   2175
+      Left            =   4080
+      TabIndex        =   1
+      Top             =   720
+      Width           =   1335
+   End
    Begin VB.CommandButton Command1 
       Caption         =   "Ingresar"
       Height          =   615
