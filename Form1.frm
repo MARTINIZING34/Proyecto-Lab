@@ -2,23 +2,23 @@ VERSION 5.00
 Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "MSADODC.OCX"
 Begin VB.Form frminicio 
    Caption         =   "Inicio"
-   ClientHeight    =   7455
+   ClientHeight    =   7995
    ClientLeft      =   120
    ClientTop       =   465
-   ClientWidth     =   11430
+   ClientWidth     =   11475
    LinkTopic       =   "Form1"
    Picture         =   "Form1.frx":0000
-   ScaleHeight     =   7455
-   ScaleWidth      =   11430
+   ScaleHeight     =   7995
+   ScaleWidth      =   11475
    StartUpPosition =   3  'Windows Default
    WindowState     =   2  'Maximized
    Begin VB.TextBox txtnombre 
       DataField       =   "Nombre"
       DataSource      =   "Adodc1"
-      Height          =   615
-      Left            =   9240
+      Height          =   375
+      Left            =   2520
       TabIndex        =   8
-      Top             =   480
+      Top             =   7440
       Visible         =   0   'False
       Width           =   855
    End
@@ -26,16 +26,16 @@ Begin VB.Form frminicio
       DataField       =   "Contraseña"
       DataSource      =   "Adodc1"
       Height          =   375
-      Left            =   9360
+      Left            =   1440
       TabIndex        =   7
-      Top             =   1560
+      Top             =   7440
       Visible         =   0   'False
       Width           =   975
    End
    Begin MSAdodcLib.Adodc Adodc1 
       Height          =   495
-      Left            =   1080
-      Top             =   240
+      Left            =   0
+      Top             =   7440
       Visible         =   0   'False
       Width           =   1455
       _ExtentX        =   2566
@@ -81,78 +81,96 @@ Begin VB.Form frminicio
    End
    Begin VB.CommandButton cmdsalir 
       Caption         =   "Salir"
+      BeginProperty Font 
+         Name            =   "Niagara Engraved"
+         Size            =   14.25
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
       Height          =   615
-      Left            =   7680
+      Left            =   6000
       TabIndex        =   6
-      Top             =   5880
-      Width           =   1815
+      Top             =   6120
+      Width           =   2175
    End
    Begin VB.TextBox txtcontraseña 
-      Height          =   375
-      Left            =   3840
+      Height          =   495
+      Left            =   5640
       TabIndex        =   5
-      Top             =   3600
-      Width           =   2295
+      Top             =   4080
+      Width           =   2535
    End
    Begin VB.CommandButton cmdingresar 
       Caption         =   "Ingresar"
+      BeginProperty Font 
+         Name            =   "Niagara Engraved"
+         Size            =   14.25
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
       Height          =   615
-      Left            =   1440
+      Left            =   3360
       TabIndex        =   3
-      Top             =   5640
+      Top             =   6120
       Width           =   2175
    End
    Begin VB.TextBox txtusuario 
-      Height          =   375
-      Left            =   3960
+      Height          =   495
+      Left            =   5640
       TabIndex        =   2
-      Top             =   2400
-      Width           =   2295
+      Top             =   3120
+      Width           =   2535
    End
    Begin VB.Label Label3 
       BackStyle       =   0  'Transparent
       Caption         =   "Contraseña:"
       BeginProperty Font 
-         Name            =   "MS Sans Serif"
-         Size            =   22.5
+         Name            =   "Garamond"
+         Size            =   23.25
          Charset         =   0
-         Weight          =   400
+         Weight          =   700
          Underline       =   0   'False
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
       ForeColor       =   &H00C0C000&
       Height          =   1095
-      Left            =   1320
+      Left            =   3000
       TabIndex        =   1
-      Top             =   3360
-      Width           =   3015
+      Top             =   3960
+      Width           =   2415
    End
    Begin VB.Label Label2 
       BackStyle       =   0  'Transparent
       Caption         =   "Usuario:"
       BeginProperty Font 
-         Name            =   "MS Sans Serif"
-         Size            =   22.5
+         Name            =   "Garamond"
+         Size            =   23.25
          Charset         =   0
-         Weight          =   400
+         Weight          =   700
          Underline       =   0   'False
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
       ForeColor       =   &H00C0C000&
       Height          =   735
-      Left            =   1680
+      Left            =   3600
       TabIndex        =   4
-      Top             =   2160
-      Width           =   1815
+      Top             =   3120
+      Width           =   1695
    End
    Begin VB.Label Label1 
       BackStyle       =   0  'Transparent
       Caption         =   "Laboratorios ""El Puente"" "
       BeginProperty Font 
-         Name            =   "Segoe MDL2 Assets"
-         Size            =   36
+         Name            =   "Stencil"
+         Size            =   39.75
          Charset         =   0
          Weight          =   700
          Underline       =   0   'False
@@ -160,11 +178,11 @@ Begin VB.Form frminicio
          Strikethrough   =   0   'False
       EndProperty
       ForeColor       =   &H00C0C000&
-      Height          =   1815
-      Left            =   4080
+      Height          =   2175
+      Left            =   2760
       TabIndex        =   0
-      Top             =   -120
-      Width           =   3375
+      Top             =   0
+      Width           =   6975
    End
 End
 Attribute VB_Name = "frminicio"
