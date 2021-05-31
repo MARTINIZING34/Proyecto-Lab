@@ -1,78 +1,98 @@
 VERSION 5.00
+Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "MSADODC.OCX"
 Begin VB.Form frminicio 
    Caption         =   "Inicio"
-   ClientHeight    =   7395
+   ClientHeight    =   7455
    ClientLeft      =   120
    ClientTop       =   465
    ClientWidth     =   11430
    LinkTopic       =   "Form1"
    Picture         =   "Form1.frx":0000
-   ScaleHeight     =   7395
+   ScaleHeight     =   7455
    ScaleWidth      =   11430
    StartUpPosition =   3  'Windows Default
    WindowState     =   2  'Maximized
-   Begin VB.CommandButton cmdsalir 
-      Caption         =   "Salir"
-      Height          =   615
-      Left            =   7680
-      TabIndex        =   10
-      Top             =   5880
-      Width           =   1815
-   End
-   Begin VB.TextBox txtnumerousuario 
-      Height          =   615
-      Left            =   7080
-      TabIndex        =   9
-      Top             =   2160
-      Visible         =   0   'False
-      Width           =   975
-   End
-   Begin VB.TextBox txtnumeroclave 
-      Height          =   495
-      Left            =   7320
-      TabIndex        =   8
-      Top             =   3600
-      Visible         =   0   'False
-      Width           =   615
-   End
    Begin VB.TextBox txtnombre 
       DataField       =   "Nombre"
       DataSource      =   "Adodc1"
-      Height          =   285
-      Left            =   240
-      TabIndex        =   7
-      Top             =   1200
+      Height          =   615
+      Left            =   9240
+      TabIndex        =   8
+      Top             =   480
       Visible         =   0   'False
-      Width           =   735
-   End
-   Begin VB.PictureBox Adodc1 
-      BackColor       =   &H80000005&
-      ForeColor       =   &H80000008&
-      Height          =   330
-      Left            =   240
-      ScaleHeight     =   270
-      ScaleWidth      =   1140
-      TabIndex        =   11
-      Top             =   240
-      Visible         =   0   'False
-      Width           =   1200
-   End
-   Begin VB.TextBox txtcontraseña 
-      Height          =   375
-      Left            =   3840
-      TabIndex        =   6
-      Top             =   3600
-      Width           =   2295
+      Width           =   855
    End
    Begin VB.TextBox txtclave 
       DataField       =   "Contraseña"
       DataSource      =   "Adodc1"
       Height          =   375
-      Left            =   120
-      TabIndex        =   5
-      Top             =   600
+      Left            =   9360
+      TabIndex        =   7
+      Top             =   1560
       Visible         =   0   'False
-      Width           =   855
+      Width           =   975
+   End
+   Begin MSAdodcLib.Adodc Adodc1 
+      Height          =   495
+      Left            =   1080
+      Top             =   240
+      Visible         =   0   'False
+      Width           =   1455
+      _ExtentX        =   2566
+      _ExtentY        =   873
+      ConnectMode     =   0
+      CursorLocation  =   3
+      IsolationLevel  =   -1
+      ConnectionTimeout=   15
+      CommandTimeout  =   30
+      CursorType      =   3
+      LockType        =   3
+      CommandType     =   1
+      CursorOptions   =   0
+      CacheSize       =   50
+      MaxRecords      =   0
+      BOFAction       =   0
+      EOFAction       =   0
+      ConnectStringType=   1
+      Appearance      =   1
+      BackColor       =   -2147483643
+      ForeColor       =   -2147483640
+      Orientation     =   0
+      Enabled         =   -1
+      Connect         =   "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\Bravo\Desktop\Git\G1\Laboratorio.mdb;Persist Security Info=False"
+      OLEDBString     =   "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\Bravo\Desktop\Git\G1\Laboratorio.mdb;Persist Security Info=False"
+      OLEDBFile       =   ""
+      DataSourceName  =   ""
+      OtherAttributes =   ""
+      UserName        =   ""
+      Password        =   ""
+      RecordSource    =   "select * from Administrador"
+      Caption         =   "Adodc1"
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "MS Sans Serif"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      _Version        =   393216
+   End
+   Begin VB.CommandButton cmdsalir 
+      Caption         =   "Salir"
+      Height          =   615
+      Left            =   7680
+      TabIndex        =   6
+      Top             =   5880
+      Width           =   1815
+   End
+   Begin VB.TextBox txtcontraseña 
+      Height          =   375
+      Left            =   3840
+      TabIndex        =   5
+      Top             =   3600
+      Width           =   2295
    End
    Begin VB.CommandButton cmdingresar 
       Caption         =   "Ingresar"
@@ -155,40 +175,44 @@ Attribute VB_Exposed = False
 
 Private Sub cmdingresar_Click()
 
+'Verificación de usuario y contraseña
+
+Adodc1.RecordSource = "select * from Administrador where Nombre = '" + txtusuario.Text + "' and Contraseña = '" + txtcontraseña.Text + "'"
+Adodc1.Refresh
+If Adodc1.Recordset.EOF Then
+    MsgBox "Revise sus datos y vuelva a intentarlo", vbInformation, "Laboratorios el Puente "
+Else
+    Form2.Show
+End If
 'Verificación del usuario
 
-If txtusuario.Text = "" Then
-    MsgBox "Ingrese su usuario", vbInformation, "Laboratorios el Puente"
-    
-Else
-    If txtusuario.Text = txtnombre.Text Then
-        txtnumerousuario.Text = 1
-    Else
-        MsgBox "Usuario incorrecto", vbInformation, "Laboratorios el Puente"
+'If txtusuario.Text = "" Then
+    'MsgBox "Ingrese su usuario", vbInformation, "Laboratorios el Puente"
+'Else
+    'If txtusuario.Text = txtnombre.Text Then
+        'If txtcontraseña.Text = "" Then
+            'MsgBox "Ingrese su contraseña", vbInformation, "Laboratorios el Puente"
+        'Else
+            'If txtcontraseña.Text = txtclave.Text Then
+                'Form2.Show
+                'Unload Me
+            'Else
+                'MsgBox "Contraseña incorrecta", vbInformation, "Laboratorios el Puente"
+            'End If
+        'End If
+    'Else
+        'MsgBox "Usuario incorrecto", vbInformation, "Laboratorios el Puente"
         
-    End If
-End If
+    'End If
+'End If
 
 'Verificación de la contraseña
 
-If txtcontraseña.Text = "" Then
-    MsgBox "Ingrese su contraseña", vbInformation, "Laboratorios el Puente"
-    
-Else
-    If txtcontraseña.Text = txtclave.Text Then
-        txtnumeroclave.Text = 1
-    Else
-        MsgBox "Contraseña incorrecta", vbInformation, "Laboratorios el Puente"
-        
-    End If
-End If
+
 
 'Ingreso al segundo formulario
 
-If txtnumeroclave.Text = txtnumerousuario.Text Then
-    Form2.Show
-    Unload Me
-End If
+
     
 End Sub
 
@@ -198,10 +222,4 @@ Private Sub cmdsalir_Click()
     End If
 End Sub
 
-Private Sub Form_Load()
 
-'Datos para que la condición funcione
-
-    txtnumeroclave.Text = 23
-    txtnumerousuario.Text = 11
-End Sub
