@@ -152,7 +152,8 @@ Adodc1.Refresh
 If Adodc1.Recordset.EOF Then
     MsgBox "Revise sus datos y vuelva a intentarlo", vbInformation, "Laboratorios el Puente "
 Else
-    Form2.Show
+    frmbuscar.Show
+    Unload Me
 End If
 'Verificación del usuario
 

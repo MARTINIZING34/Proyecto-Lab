@@ -9,8 +9,9 @@ Begin VB.Form frmdatos
    ScaleHeight     =   4560
    ScaleWidth      =   10845
    StartUpPosition =   3  'Windows Default
+   WindowState     =   2  'Maximized
    Begin VB.CommandButton Command2 
-      Caption         =   "salir"
+      Caption         =   "Volver"
       Height          =   375
       Left            =   5880
       TabIndex        =   10
@@ -25,7 +26,8 @@ Begin VB.Form frmdatos
       Top             =   1080
       Width           =   1575
    End
-   Begin VB.TextBox Text4 
+   Begin VB.TextBox txtmarca 
+      Enabled         =   0   'False
       Height          =   375
       Left            =   2640
       TabIndex        =   8
@@ -33,7 +35,8 @@ Begin VB.Form frmdatos
       Top             =   3360
       Width           =   1335
    End
-   Begin VB.TextBox Text3 
+   Begin VB.TextBox txtfecha 
+      Enabled         =   0   'False
       Height          =   285
       Left            =   2640
       TabIndex        =   7
@@ -41,7 +44,8 @@ Begin VB.Form frmdatos
       Top             =   2640
       Width           =   975
    End
-   Begin VB.TextBox Text2 
+   Begin VB.TextBox txtcantidad 
+      Enabled         =   0   'False
       Height          =   285
       Left            =   2520
       TabIndex        =   6
@@ -49,7 +53,8 @@ Begin VB.Form frmdatos
       Top             =   1800
       Width           =   1455
    End
-   Begin VB.TextBox Text1 
+   Begin VB.TextBox txtnombre 
+      Enabled         =   0   'False
       Height          =   375
       Left            =   2640
       TabIndex        =   5
@@ -103,3 +108,23 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
+Private Sub Command1_Click()
+    If MsgBox("¿Desea utilizar el reactivo seleccionado?", vbInformation + vbYesNo, "Laboratorios el Puente") = vbYes Then
+        frmuso.Show
+        Unload Me
+    End If
+End Sub
+
+Private Sub Command2_Click()
+    If MsgBox("¿Desea regresar a la selección de reactivos?", vbInformation + vbYesNo, "Laboratorios el Puente") = vbYes Then
+        frmbuscar.Show
+        Unload Me
+    End If
+End Sub
+
+Private Sub Form_Load()
+    txtnombre.Text = Nombre
+    txtcantidad.Text = Cantidad
+    txtfecha.Text = Fecha
+    txtmarca.Text = Marca
+End Sub

@@ -9,6 +9,14 @@ Begin VB.Form frmuso
    ScaleHeight     =   4665
    ScaleWidth      =   12645
    StartUpPosition =   3  'Windows Default
+   Begin VB.TextBox Text1 
+      Height          =   375
+      Left            =   9240
+      TabIndex        =   7
+      Text            =   "Text1"
+      Top             =   480
+      Width           =   1215
+   End
    Begin VB.CommandButton Command2 
       Caption         =   "salir"
       Height          =   1455
@@ -34,19 +42,18 @@ Begin VB.Form frmuso
       Top             =   1440
       Width           =   1815
    End
-   Begin VB.TextBox Text2 
+   Begin VB.TextBox txtcantidadutilizar 
       Height          =   495
       Left            =   2880
       TabIndex        =   4
-      Text            =   "Text2"
       Top             =   2280
       Width           =   2175
    End
-   Begin VB.TextBox Text1 
+   Begin VB.TextBox txtcantidad 
+      Enabled         =   0   'False
       Height          =   375
       Left            =   2640
       TabIndex        =   2
-      Text            =   "Text1"
       Top             =   1320
       Width           =   2415
    End
@@ -84,7 +91,7 @@ Begin VB.Form frmuso
       Top             =   1200
       Width           =   1695
    End
-   Begin VB.Label Label1 
+   Begin VB.Label lblnombre 
       Caption         =   "Nombre del reactivo"
       BeginProperty Font 
          Name            =   "MS Sans Serif"
@@ -107,3 +114,22 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
+Private Sub Command1_Click()
+        Resultado = Val(txtcantidad.Text) - Val(txtcantidadutilizar.Text)
+        Text1.Text = Resultado
+        
+        frmdatos.Show
+End Sub
+Private Sub Command2_Click()
+    If MsgBox("¿Desea volver a la seleccion de reactivos?", vbInformation + vbYesNo, "Laboratorios el Puente") = vbYes Then
+        Unload Me
+    End If
+End Sub
+
+Private Sub Form_Load()
+    txtcantidad.Text = Cantidad
+    lblnombre.Caption = Nombre
+    If txtcantidad.Text = 10 Then
+        MsgBox "La cantidad restante de reactivos es 10 por favor regitre más reactivos"
+    End If
+End Sub
