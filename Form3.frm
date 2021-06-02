@@ -1,6 +1,6 @@
 VERSION 5.00
 Begin VB.Form frmuso 
-   BackColor       =   &H8000000E&
+   BackColor       =   &H8000000B&
    Caption         =   "Form3"
    ClientHeight    =   4665
    ClientLeft      =   120
