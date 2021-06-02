@@ -1,5 +1,6 @@
 VERSION 5.00
 Begin VB.Form frmbuscar 
+   BackColor       =   &H00FFFFC0&
    Caption         =   "Form2"
    ClientHeight    =   5895
    ClientLeft      =   120
@@ -11,11 +12,12 @@ Begin VB.Form frmbuscar
    StartUpPosition =   3  'Windows Default
    WindowState     =   2  'Maximized
    Begin VB.CommandButton Command2 
+      BackColor       =   &H00FFFF80&
       Caption         =   "Salir"
       Height          =   375
-      Left            =   11400
+      Left            =   10680
       TabIndex        =   10
-      Top             =   3240
+      Top             =   3720
       Width           =   1695
    End
    Begin VB.ComboBox Combo1 
@@ -24,14 +26,14 @@ Begin VB.Form frmbuscar
       Left            =   5280
       List            =   "Form2.frx":0007
       TabIndex        =   9
-      Top             =   1920
+      Top             =   1800
       Width           =   3495
    End
    Begin VB.TextBox txtbuscartexto 
-      Height          =   375
-      Left            =   5400
+      Height          =   405
+      Left            =   5280
       TabIndex        =   8
-      Top             =   2640
+      Top             =   2520
       Width           =   3375
    End
    Begin VB.TextBox txtmarca 
@@ -71,36 +73,90 @@ Begin VB.Form frmbuscar
       Width           =   1455
    End
    Begin VB.CommandButton Command1 
+      BackColor       =   &H00FFFF80&
       Caption         =   "Utilizar"
       Height          =   735
-      Left            =   10920
+      Left            =   10080
+      MaskColor       =   &H00000000&
       TabIndex        =   2
-      Top             =   2280
+      Top             =   2400
       Width           =   3015
    End
    Begin VB.Label Label3 
-      Caption         =   "Seleccione el tipo de búsqueda"
-      Height          =   735
+      BackColor       =   &H00FFC0C0&
+      BackStyle       =   0  'Transparent
+      Caption         =   "Seleccione el tipo de búsqueda:"
+      BeginProperty Font 
+         Name            =   "Century"
+         Size            =   15.75
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   &H8000000D&
+      Height          =   615
       Left            =   120
       TabIndex        =   3
       Top             =   1800
-      Width           =   5535
+      Width           =   4695
    End
    Begin VB.Label Label2 
-      Caption         =   "Escriba el nombre del reactivo"
-      Height          =   975
-      Left            =   480
+      BackColor       =   &H00FFC0C0&
+      BackStyle       =   0  'Transparent
+      Caption         =   "Escriba el nombre del reactivo:"
+      BeginProperty Font 
+         Name            =   "Century"
+         Size            =   15.75
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   &H8000000D&
+      Height          =   615
+      Left            =   120
       TabIndex        =   1
-      Top             =   2640
-      Width           =   3615
+      Top             =   2520
+      Width           =   4695
+   End
+   Begin VB.Shape Shape2 
+      BackColor       =   &H00C0C000&
+      BackStyle       =   1  'Opaque
+      Height          =   4455
+      Left            =   0
+      Top             =   1320
+      Width           =   5055
    End
    Begin VB.Label Label1 
+      BackColor       =   &H00FFC0C0&
+      BackStyle       =   0  'Transparent
       Caption         =   "Reactivos y marcadores tumorales"
+      BeginProperty Font 
+         Name            =   "Century"
+         Size            =   20.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   &H8000000D&
       Height          =   735
       Left            =   4320
       TabIndex        =   0
       Top             =   240
-      Width           =   4695
+      Width           =   6735
+   End
+   Begin VB.Shape Shape1 
+      BackColor       =   &H00C0C000&
+      BackStyle       =   1  'Opaque
+      Height          =   1335
+      Left            =   0
+      Top             =   0
+      Width           =   14895
    End
 End
 Attribute VB_Name = "frmbuscar"
@@ -161,3 +217,10 @@ Private Sub Form_Load()
     
 End Sub
 
+Private Sub Label1_Click()
+
+End Sub
+
+Private Sub Label3_Click()
+
+End Sub
