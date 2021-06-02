@@ -1,14 +1,14 @@
 VERSION 5.00
 Begin VB.Form frmuso 
    BackColor       =   &H8000000B&
-   Caption         =   "Form3"
+   Caption         =   "Uso de reactivos"
    ClientHeight    =   4665
    ClientLeft      =   120
    ClientTop       =   465
-   ClientWidth     =   12645
+   ClientWidth     =   14955
    LinkTopic       =   "Form3"
    ScaleHeight     =   4665
-   ScaleWidth      =   12645
+   ScaleWidth      =   14955
    StartUpPosition =   3  'Windows Default
    Begin VB.CommandButton Command2 
       Caption         =   "salir"
@@ -134,19 +134,39 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
+Dim cn As New ADODB.Connection
+Private WithEvents rs As ADODB.Recordset
+Attribute rs.VB_VarHelpID = -1
 Private Sub Command1_Click()
         Resultado = Val(txtcantidad.Text) - Val(txtcantidadutilizar.Text)
         Text1.Text = Resultado
-        
-        frmdatos.Show
+        rs.Update "NúmeroReactivos", txtcantidad.Text
+        rs.Update
+        If rs.State = 1 Or rs.State = 0 Then
+            MsgBox "Cambios realizados"
+            
+            Unload Me
+            frmbuscar.Show
+            
+        Else
+            MsgBox "Ha ocurrido un error"
+        End If
+        'frmdatos.Show
 End Sub
 Private Sub Command2_Click()
-    If MsgBox("¿Desea volver a la seleccion de reactivos?", vbInformation + vbYesNo, "Laboratorios el Puente") = vbYes Then
+    If MsgBox("¿Desea volver a la selección de reactivos?", vbInformation + vbYesNo, "Laboratorios el Puente") = vbYes Then
         Unload Me
     End If
 End Sub
 
 Private Sub Form_Load()
+Set rs = New ADODB.Recordset
+    cn.Open "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\Bravo\Desktop\Git\G1\Laboratorio.mdb;Persist Security Info=False"
+    rs.Source = "contactos"
+    rs.LockType = adLockOptimistic
+    rs.CursorType = adOpenKeyset
+    rs.Open "select * from Reactivos", cn 'Abrir recordset
+    rs.MoveFirst 'Mover al principio
     txtcantidad.Text = Cantidad
     lblnombre.Caption = Nombre
     If txtcantidad.Text = 10 Then

@@ -1,39 +1,144 @@
 VERSION 5.00
+Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "MSADODC.OCX"
+Object = "{CDE57A40-8B86-11D0-B3C6-00A0C90AEA82}#1.0#0"; "MSDATGRD.OCX"
 Begin VB.Form frmbuscar 
    BackColor       =   &H00FFFFC0&
-   Caption         =   "Form2"
-   ClientHeight    =   5895
+   Caption         =   "Selección de reactivos y marcadores tumorales"
+   ClientHeight    =   7800
    ClientLeft      =   120
    ClientTop       =   465
    ClientWidth     =   14865
    LinkTopic       =   "Form2"
-   ScaleHeight     =   5895
+   ScaleHeight     =   7800
    ScaleWidth      =   14865
    StartUpPosition =   3  'Windows Default
    WindowState     =   2  'Maximized
+   Begin MSAdodcLib.Adodc Adodc1 
+      Height          =   495
+      Left            =   11880
+      Top             =   720
+      Visible         =   0   'False
+      Width           =   1815
+      _ExtentX        =   3201
+      _ExtentY        =   873
+      ConnectMode     =   0
+      CursorLocation  =   3
+      IsolationLevel  =   -1
+      ConnectionTimeout=   15
+      CommandTimeout  =   30
+      CursorType      =   3
+      LockType        =   3
+      CommandType     =   2
+      CursorOptions   =   0
+      CacheSize       =   50
+      MaxRecords      =   0
+      BOFAction       =   0
+      EOFAction       =   0
+      ConnectStringType=   1
+      Appearance      =   1
+      BackColor       =   -2147483643
+      ForeColor       =   -2147483640
+      Orientation     =   0
+      Enabled         =   -1
+      Connect         =   "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\Bravo\Desktop\Git\G1\Laboratorio.mdb;Persist Security Info=False"
+      OLEDBString     =   "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\Bravo\Desktop\Git\G1\Laboratorio.mdb;Persist Security Info=False"
+      OLEDBFile       =   ""
+      DataSourceName  =   ""
+      OtherAttributes =   ""
+      UserName        =   ""
+      Password        =   ""
+      RecordSource    =   "Reactivos"
+      Caption         =   "Adodc1"
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "MS Sans Serif"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      _Version        =   393216
+   End
+   Begin MSDataGridLib.DataGrid DataGrid1 
+      Bindings        =   "Form2.frx":0000
+      Height          =   3615
+      Left            =   5160
+      TabIndex        =   10
+      Top             =   2160
+      Width           =   7815
+      _ExtentX        =   13785
+      _ExtentY        =   6376
+      _Version        =   393216
+      HeadLines       =   1
+      RowHeight       =   15
+      BeginProperty HeadFont {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "MS Sans Serif"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "MS Sans Serif"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ColumnCount     =   2
+      BeginProperty Column00 
+         DataField       =   ""
+         Caption         =   ""
+         BeginProperty DataFormat {6D835690-900B-11D0-9484-00A0C91110ED} 
+            Type            =   0
+            Format          =   ""
+            HaveTrueFalseNull=   0
+            FirstDayOfWeek  =   0
+            FirstWeekOfYear =   0
+            LCID            =   12298
+            SubFormatType   =   0
+         EndProperty
+      EndProperty
+      BeginProperty Column01 
+         DataField       =   ""
+         Caption         =   ""
+         BeginProperty DataFormat {6D835690-900B-11D0-9484-00A0C91110ED} 
+            Type            =   0
+            Format          =   ""
+            HaveTrueFalseNull=   0
+            FirstDayOfWeek  =   0
+            FirstWeekOfYear =   0
+            LCID            =   12298
+            SubFormatType   =   0
+         EndProperty
+      EndProperty
+      SplitCount      =   1
+      BeginProperty Split0 
+         BeginProperty Column00 
+         EndProperty
+         BeginProperty Column01 
+         EndProperty
+      EndProperty
+   End
    Begin VB.CommandButton Command2 
       BackColor       =   &H00FFFF80&
       Caption         =   "Salir"
       Height          =   375
-      Left            =   10680
-      TabIndex        =   10
-      Top             =   3720
-      Width           =   1695
-   End
-   Begin VB.ComboBox Combo1 
-      Height          =   315
-      ItemData        =   "Form2.frx":0000
-      Left            =   5280
-      List            =   "Form2.frx":0007
+      Left            =   12720
       TabIndex        =   9
-      Top             =   1800
-      Width           =   3495
+      Top             =   4200
+      Width           =   1695
    End
    Begin VB.TextBox txtbuscartexto 
       Height          =   405
-      Left            =   5280
+      Left            =   5880
       TabIndex        =   8
-      Top             =   2520
+      Top             =   1560
       Width           =   3375
    End
    Begin VB.TextBox txtmarca 
@@ -76,16 +181,16 @@ Begin VB.Form frmbuscar
       BackColor       =   &H00FFFF80&
       Caption         =   "Utilizar"
       Height          =   735
-      Left            =   10080
+      Left            =   13080
       MaskColor       =   &H00000000&
       TabIndex        =   2
-      Top             =   2400
-      Width           =   3015
+      Top             =   1800
+      Width           =   1335
    End
    Begin VB.Label Label3 
       BackColor       =   &H00FFC0C0&
       BackStyle       =   0  'Transparent
-      Caption         =   "Seleccione el tipo de búsqueda:"
+      Caption         =   "Seleccione un reactivo de la lista"
       BeginProperty Font 
          Name            =   "Century"
          Size            =   15.75
@@ -100,7 +205,7 @@ Begin VB.Form frmbuscar
       Left            =   120
       TabIndex        =   3
       Top             =   1800
-      Width           =   4695
+      Width           =   5415
    End
    Begin VB.Label Label2 
       BackColor       =   &H00FFC0C0&
@@ -169,16 +274,13 @@ Private WithEvents rs As ADODB.Recordset
 Attribute rs.VB_VarHelpID = -1
 
 Private Sub Command1_Click()
-    If Len(Trim(Combo1.Text)) = 0 Then
-        MsgBox "Seleccione el tipo de busqueda", vbInformation, "Laboratorios el Puente"
-        Combo1.SetFocus
-    ElseIf Len(Trim(txtbuscartexto.Text)) = 0 Then
-        MsgBox "Escriba el nombre del reactivo", vbInformation, "Laboratorios el Puente"
+    If Len(Trim(txtbuscartexto.Text)) = 0 Then
+        MsgBox "Seleccione un reactivo", vbInformation, "Laboratorios el Puente"
         txtbuscartexto.SetFocus
     Else
-        If LCase(Combo1.Text) = LCase("NombreReactivos") Then
+       
             rs.Find "NombreReactivos = '" & txtbuscartexto.Text & "'", , , 1
-        End If
+        
         If rs.BOF = False And rs.EOF = False Then
         'cargar datos a las cajas de texto
             txtnombre.Text = rs.Fields("NombreReactivos")
@@ -191,7 +293,8 @@ Private Sub Command1_Click()
                 Fecha = txtfecha.Text
                 Marca = txtmarca.Text
                 
-                frmdatos.Show
+                frmuso.Show
+                Unload Me
             End If
         Else
             MsgBox "Reactivo incorrecto", vbInformation, "Laboratorios el Puente"
@@ -206,6 +309,10 @@ Private Sub Command2_Click()
     End If
 End Sub
 
+Private Sub DataGrid1_Click()
+    txtbuscartexto.Text = DataGrid1.Columns(1).Text
+End Sub
+
 Private Sub Form_Load()
     Set rs = New ADODB.Recordset
     cn.Open "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\Bravo\Desktop\Git\G1\Laboratorio.mdb;Persist Security Info=False"
@@ -214,13 +321,10 @@ Private Sub Form_Load()
     rs.CursorType = adOpenKeyset
     rs.Open "select * from Reactivos", cn 'Abrir recordset
     rs.MoveFirst 'Mover al principio
+    formato
     
 End Sub
-
-Private Sub Label1_Click()
-
-End Sub
-
-Private Sub Label3_Click()
-
+Sub formato()
+    DataGrid1.Columns(0).Width = 0
+    DataGrid1.Columns(5).Width = 0
 End Sub
